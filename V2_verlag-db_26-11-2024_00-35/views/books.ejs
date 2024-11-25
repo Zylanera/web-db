@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Books</title>
+<link rel="stylesheet" href="/css/boards.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Book Management</h2>
+    <ul>
+        <li><a href="/books">Manage Books</a></li>
+        <li><a href="/collections">Manage Collections</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <h1>Your Books</h1>
+
+    <p><a href="/books/new">Add New Book</a></p> <!-- Link zum neuen Buchformular -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Release Date</th>
+                <th>Volume Number</th>
+                <th>ISBN-13</th>
+                <th>ISBN-10</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach(book => { %> 
+                <tr>
+                    <td><img src="<%= book.cover %>" alt="<%= book.title %> Cover" style="width:50px;height:auto;"></td> <!-- Cover-Bild -->
+                    <td><%= book.title %></td> 
+                    <td><%= book.description %></td> 
+                    <td><%= book.price %></td> 
+                    <td><%= book.release_date || 'TBA' %></td> <!-- Standardwert TBA -->
+                    <td><%= book.volume_number %></td> 
+                    <td><%= book.isbn13 || 'N/A' %></td> <!-- Optional -->
+                    <td><%= book.isbn10 || 'N/A' %></td> <!-- Optional -->
+                </tr>
+            <% }); %> 
+        </tbody>
+    </table>
+
+    <a href="/dashboard">Back to Dashboard</a>
+</div>
+
+</body> 
+</html> 

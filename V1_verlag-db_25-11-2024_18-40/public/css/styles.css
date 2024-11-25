@@ -1,0 +1,151 @@
+/* Allgemeine Stile */
+html, body {
+    overflow: hidden; /* Verhindert Scrollen auf der Seite */
+    height: 100%; /* Ermöglicht korrekte Layout-Ausdehnung */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout-Container */
+.container {
+    display: flex; /* Flexbox für Sidebar und Content */
+    height: 100vh; /* Vollständige Höhe des Viewports */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px; /* Festgelegte Breite */
+    background-color: #333; /* Dunkler Hintergrund */
+    color: #fff; /* Heller Text */
+    padding: 20px;
+    height: 100%; /* Volle Höhe des Containers */
+}
+
+.sidebar h2 {
+    color: #ffde59; /* Akzentfarbe */
+}
+
+.sidebar ul {
+    list-style-type: none; /* Keine Aufzählungszeichen */
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px; /* Abstand zwischen Links */
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none; /* Keine Unterstreichung */
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline; /* Unterstreichung beim Hovern */
+}
+
+/* Content */
+.content {
+    flex-grow: 1; /* Nimmt verbleibenden Platz ein */
+    padding: 20px;
+    overflow-y: hidden; /* Kein vertikales Scrollen */
+}
+
+h1 {
+    color: #333;
+}
+
+/* Formulare */
+form {
+    max-width: 450px;
+    margin: 20px auto; /* Zentrierung */
+    padding: 25px; /* Polsterung für den Inhalt */
+    background: linear-gradient(135deg, #fff, #f9f9f9); /* Dezenter Verlauf */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Tiefer Schatten */
+    transition: transform 0.3s ease; /* Sanfte Animation */
+}
+
+form:hover {
+    transform: scale(1.02); /* Leichte Vergrößerung */
+}
+
+label {
+    display: block; /* Block-Element für Konsistenz */
+    margin-bottom: 8px; /* Abstand */
+    font-weight: bold;
+    color: #555; /* Dezente Textfarbe */
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+    width: 100%; /* Felder nehmen gesamte Breite ein */
+    padding: 12px 15px;
+    margin-bottom: 20px; /* Abstand zwischen Feldern */
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #f8f8f8;
+    color: #333;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover,
+select:hover,
+textarea:hover {
+    background-color: #f0f0f0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #ffde59;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 222, 89, 0.5);
+}
+
+textarea {
+    resize: vertical; /* Vertikales Ändern der Größe */
+    min-height: 120px;
+}
+
+/* Button */
+button {
+    display: inline-block;
+    width: 100%; /* Volle Breite */
+    padding: 14px;
+    background-color: #ffde59;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ffd54f; /* Dunkleres Gelb */
+    transform: translateY(-2px); /* Leichtes Heben */
+}
+
+button:active {
+    transform: translateY(0); /* Zurücksetzen beim Klicken */
+    background-color: #ffcc33; /* Noch dunkleres Gelb */
+}
+
+/* Allgemeine Listen */
+ul {
+    list-style-type: none;
+    padding: 0;
+}

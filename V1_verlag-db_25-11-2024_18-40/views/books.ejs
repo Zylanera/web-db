@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Books</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/books">Manage Books</a></li>
+            <li><a href="/collections">Manage Collections</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Your Books</h1>
+
+        <p><a href="/books/new">Add New Book</a></p> <!-- Link zum neuen Buchformular -->
+
+        <ul id="book-list">
+            <% books.forEach(book => { %> 
+                <li><%= book.title %></li> 
+            <% }); %> 
+        </ul>
+
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+
+</body> 
+</html> 
