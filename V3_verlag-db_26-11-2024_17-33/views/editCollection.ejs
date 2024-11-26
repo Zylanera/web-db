@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Edit Collection</title>
+    <link rel="stylesheet" href="/css/newColl.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/books">Manage Books</a></li>
+            <li><a href="/collections">Manage Collections</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Edit Collection</h1>
+
+        <form action="/collections/edit/<%= collection.id %>" method="POST">
+            <label for="name">Collection Name:</label>
+            <input type="text" id="name" name="name" value="<%= collection.name %>" required />
+
+            <div class="button-container">
+                <button type="submit" class="update-button">Update Collection</button>
+            
+        </form>
+
+        <form action="/collections/delete/<%= collection.id %>" method="POST" class="delete-form">
+            <button type="submit" class="delete-button">Delete Collection</button>
+        </form>
+    </div>
+
+        <a href="/collections">Back to Collections List</a>
+    </div>
+</div>
+
+</body>
+</html>

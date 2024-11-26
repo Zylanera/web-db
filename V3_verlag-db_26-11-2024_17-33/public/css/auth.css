@@ -1,0 +1,88 @@
+/* Allgemeine Stile für den gesamten Körper */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffbea; /* Leicht gelblicher Hintergrund */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container für Titel und Formular */
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titel */
+h1 {
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Formular */
+form {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+/* Eingabefelder */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Button-Stile */
+button {
+    width: 100%;
+    background-color: #ffde59; /* Gelbe Farbe für den Button */
+    color: #333;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e6c84f; /* Etwas dunkleres Gelb beim Hover */
+}
+
+/* Link-Stil */
+p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
