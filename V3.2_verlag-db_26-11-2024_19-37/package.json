@@ -1,0 +1,19 @@
+{
+    "name": "book-management-system",
+    "version": "1.0.0",
+    "description": "A simple book management system",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "body-parser": "^1.20.3",
+        "discord.js": "^14.16.3",
+        "dotenv": "^16.4.5",
+        "ejs": "^3.1.10",
+        "express": "^4.21.1",
+        "express-session": "^1.18.1",
+        "mysql2": "^2.3.3"
+    }
+}

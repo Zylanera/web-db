@@ -1,0 +1,245 @@
+/* Allgemeine Stile */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fffbea; /* Leicht gelblicher Hintergrund */
+    color: #333;
+}
+
+/* Container für Layout */
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.navbar, .sidebar {
+    width: 250px;
+    background-color: #ffde59; /* Gelber Sidebar-Hintergrund */
+    color: #333; /* Dunkler Text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100vh;
+}
+
+.navbar h2, .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.navbar ul, .sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar ul li, .sidebar ul li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar ul li a, .sidebar ul li a {
+    text-decoration: none;
+    color: #333; /* Dunkler Text */
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover, .sidebar ul li a:hover {
+    background-color: #e6c84f; /* Etwas dunkleres Gelb beim Hover */
+    border-radius: 4px;
+}
+
+/* Inhalt */
+.content {
+    margin-left: 250px; /* Platz für die Sidebar */
+    padding: 20px;
+    width: calc(100% - 250px); /* Content nimmt den restlichen Platz neben der Sidebar */
+    box-sizing: border-box;
+}
+
+.content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #000; /* Gelber Titel */
+}
+
+.content a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* Formular */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0; /* Verhindert zentriertes Layout */
+}
+
+/* Form-Row: Felder nebeneinander */
+.form-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Felder oben ausrichten */
+    flex-wrap: wrap;
+}
+
+/* Jede einzelne Form-Field */
+.form-field {
+    flex: 1; /* Nimmt den verfügbaren Platz */
+    min-width: 200px;
+}
+
+/* Cover-Vorschau Container */
+.preview-container {
+    width: 270px; /* Feste Breite für das Cover-Preview */
+    margin-top: 10px;
+    text-align: center;
+    flex-shrink: 0; /* Verhindert, dass der Container schrumpft */
+}
+
+/* Cover-Image */
+#coverPreview {
+    width: 270px; /* Feste Breite für das Cover-Bild */
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Eingabefelder */
+input[type="text"],
+textarea {
+    width: 100%; /* Breite der Felder */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Button */
+button {
+    background-color: #ffde59;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e6c84f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column; /* Felder untereinander */
+    }
+
+    .form-field {
+        min-width: 100%; /* Felder nehmen die volle Breite */
+    }
+
+    .preview-container {
+        width: 100%; /* Cover Preview nimmt volle Breite */
+        margin-top: 20px;
+    }
+
+    .content {
+        margin-left: 0; /* Sidebar verschwindet und Content nutzt die gesamte Breite */
+        width: 100%;
+    }
+}
+
+/* Link "Back to Books List" */
+.content a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* Button Container */
+.button-container {
+    display: flex; 
+    justify-content: flex-start; 
+    gap: 20px; 
+    margin-top: auto;
+    max-height: 100px;
+    align-items: center; /* Vertikale Zentrierung */
+}
+
+/* Update Button */
+.update-button {
+    background-color: #ffde59; 
+    color: #333;
+    width: 100%;
+    height: auto;
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    padding: 10px 15px; /* Konsistente Padding */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Delete Button */
+.delete-button {
+    background-color: #ff5959; 
+    color: #fff;
+    width: 100%;
+    height: auto;
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    padding: 10px 15px; /* Konsistente Padding */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekte */
+.update-button:hover {
+    background-color: #e6c84f;
+}
+
+.delete-button:hover {
+    background-color: #e64f4f;
+}
+
+/* Delete Form */
+.delete-form {
+    margin: 0;
+}
