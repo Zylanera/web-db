@@ -6,7 +6,7 @@
 ## 1. MySQL-Setup:
 
 ### Step 1: Create and Setup Database
-Replace "dbreg" if you want to. <br><br>
+Replace "dbreg" if you want to.
 ⚠️ If you replace "dbreg", you have to change it in your config file. ⚠️
 ```mysql
 CREATE DATABASE IF NOT EXISTS dbreg;
