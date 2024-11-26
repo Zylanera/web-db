@@ -6,7 +6,8 @@
 ## 1. MySQL-Setup:
 
 ### Step 1: Create and Setup Database
-Replace "dbreg" if you want to. <br><br>
+Replace "dbreg" if you want to.
+replace "yourHashedPasswd" with your hashed password, you can use theis Hash-Generator. Use the SHA-256 Version! https://www.passwort-generator.org/hashgenerator.html<br><br>
 ⚠️ If you replace "dbreg", you have to change it in your config file. ⚠️
 ```mysql
 CREATE DATABASE IF NOT EXISTS dbreg;
@@ -49,6 +50,13 @@ ALTER TABLE books ADD COLUMN release_date VARCHAR(50);
 ALTER TABLE books ADD COLUMN volume_number VARCHAR(50);
 ALTER TABLE books ADD COLUMN isbn13 VARCHAR(20);
 ALTER TABLE books ADD COLUMN isbn10 VARCHAR(20);
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO admin (password) VALUES (SHA2('yourHashedPasswd', 256));
 ```
 
 ### Step 2: Create DB-User:
