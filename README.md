@@ -41,6 +41,14 @@ CREATE TABLE IF NOT EXISTS collection_books (
   FOREIGN KEY(book_id) REFERENCES books(id),
   PRIMARY KEY(collection_id, book_id)
 );
+
+ALTER TABLE books ADD COLUMN cover VARCHAR(255);
+ALTER TABLE books ADD COLUMN description TEXT;
+ALTER TABLE books ADD COLUMN price VARCHAR(50);
+ALTER TABLE books ADD COLUMN release_date VARCHAR(50);
+ALTER TABLE books ADD COLUMN volume_number VARCHAR(50);
+ALTER TABLE books ADD COLUMN isbn13 VARCHAR(20);
+ALTER TABLE books ADD COLUMN isbn10 VARCHAR(20);
 ```
 
 ### Step 2: Create DB-User:
