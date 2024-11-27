@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="/css/newBook.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="navbar">
+        <h2>Kisetsu Manga</h2>
+        <ul>
+            <li><a href="/books">Manage Books</a></li>
+            <li><a href="/collections">Manage Collections</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Edit Book</h1>
+            <form action="/books/edit/<%= book.id %>" method="POST">
+                <div class="form-container">
+                    <div class="form-fields">
+                        <!-- Volume Number, Book Title, Cover URL -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="volumeNumber">Volume Number:</label>
+                                <input type="text" id="volumeNumber" name="volumeNumber" value="<%= book.volume_number ?? '' %>" required />
+                            </div>
+
+                            <div class="form-field">
+                                <label for="cover">Cover URL:</label>
+                                <input type="text" id="cover" name="cover" value="<%= book.cover ?? '' %>" required oninput="showCoverPreview()" />
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="title">Book Title:</label>
+                                <input type="text" id="title" name="title" value="<%= book.title ?? '' %>" required />
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="description">Description:</label>
+                                <textarea id="description" name="description" required><%= book.description ?? '' %></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Price, Release Date -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="price">Price:</label>
+                                <input type="text" id="price" name="price" value="<%= book.price ?? '' %>" placeholder="Leave empty for TBA"/>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="releaseDate">Release Date:</label>
+                                <input type="text" id="releaseDate" name="releaseDate" value="<%= book.release_date ?? '' %>" placeholder="Leave empty for TBA"/>
+                            </div>
+                        </div>
+
+                        <!-- ISBN-13, ISBN-10 -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="isbn13">ISBN-13 (optional):</label>
+                                <input type="text" id="isbn13" name="isbn13" value="<%= book.isbn13 ?? '' %>"/>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="isbn10">ISBN-10 (optional):</label>
+                                <input type="text" id="isbn10" name="isbn10" value="<%= book.isbn10 ?? '' %>"/>
+                            </div>
+                        </div>
+
+                        <!-- Collection Selection -->
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="collection">Collection:</label>
+                                <input type="text" id="collectionInput" name="collectionInput"
+                                       value="<%= book.collection_name || '' %>" placeholder="Type to search collections">
+                                <input type="hidden" id="collectionId" name="collectionId"
+                                       value="<%= book.collection_id || '' %>">
+                            </div>
+                        </div>
+
+                        <!-- Button Wrapper -->
+                    <div class="button-wrapper">
+                        <button type="submit">Add Book</button>
+                    </div>
+                        </div>
+
+                            <!-- Cover Preview -->
+                        <div class="preview-container">
+                            <img id="coverPreview" src="<%= book.cover || '/media/no-cover-url.png' %>" alt="Cover Preview" />
+                        </div>
+                    </div>
+        
+                    <!-- Back to Books List Link -->
+                    <a href="/books" style="margin-top: 5px;">Back to Books List</a>
+                </form>
+        
+            </div>
+        </div>
+
+<script>
+// Funktion zur Anzeige der Cover-Vorschau
+function showCoverPreview() {
+    const coverInput = document.getElementById('cover');
+    const coverPreview = document.getElementById('coverPreview');
+    
+    if (coverInput.value) {
+        coverPreview.src = coverInput.value;
+    }
+
+    coverPreview.style.display = 'block';
+}
+
+// Autocomplete für Collections
+$(function() {
+    $("#collectionInput").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "/collections/search",
+                dataType: "json",
+                data: {
+                    term: request.term
+                },
+                success: function(data) {
+                    response(data);
+                }
+            });
+        },
+        minLength: 2,
+        select: function(event, ui) {
+            $("#collectionId").val(ui.item.id);
+        }
+    });
+
+    // Setze initial die Collection-ID, falls vorhanden
+    if ($("#collectionInput").val()) {
+        $("#collectionId").val("<%= book.collection_id || '' %>");
+    }
+
+    // Zurücksetzen der Collection-ID, wenn ungültiger Name eingegeben wird
+    $("#collectionInput").on("change", function() {
+        const currentValue = $(this).val();
+        
+        if (!currentValue) {
+            $("#collectionId").val(""); // Leere die ID, wenn das Feld leer ist
+            return;
+        }
+
+        $.ajax({
+            url: "/collections/search", 
+            dataType: "json",
+            data: { term: currentValue },
+            success: function(data) {
+                const isValid = data.some(item => item.label === currentValue);
+                if (!isValid) {
+                    $("#collectionId").val(""); // Reset, wenn ungültig
+                }
+            }
+        });
+    });
+});
+</script>
+
+</body> 
+</html> 

@@ -1,0 +1,162 @@
+/* Allgemeine Stile */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #fffbea; /* Leicht gelblicher Hintergrund */
+    color: #000000;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #ffde59; /* Gelber Sidebar-Hintergrund */
+    color: #333; /* Dunkler Text für guten Kontrast */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333; /* Dunkler Text */
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #e6c84f; /* Etwas dunkleres Gelb beim Hover */
+    border-radius: 4px;
+}
+
+/* Hauptinhalt */
+.content {
+    margin-left: 250px; /* Platz für die Sidebar */
+    padding: 20px;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
+}
+
+.content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #272727; /* Gelber Titel */
+}
+
+.content a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* Tabelle */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table thead {
+    background-color: #ffde59; /* Gelber Header */
+    color: #333;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table img {
+    max-width: 50px; /* Bild in der Tabelle auf 50px Breite begrenzt */
+    height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    table th,
+    table td {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .content {
+        margin-left: 150px;
+        width: calc(100% - 150px);
+    }
+
+    .sidebar h2 {
+        font-size: 16px;
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+    }
+
+    table th,
+    table td {
+        font-size: 12px;
+    }
+}
+
+/* Link "Back to Books List" */
+.content a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+

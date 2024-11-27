@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\adria_0gqnp2g\\Downloads\\verlag-db\\logs\\.a5316dd3769f8d25ecd610e52ae2d0eaacac9daa-audit.json",
+    "files": [
+        {
+            "date": 1732652226979,
+            "name": "C:\\Users\\adria_0gqnp2g\\Downloads\\verlag-db\\logs\\2024-11-26-app.log",
+            "hash": "9f83e07cb754b74f62787c83477f72df8413babcd85b9b421edb77fc6d0f8991"
+        }
+    ],
+    "hashType": "sha256"
+}

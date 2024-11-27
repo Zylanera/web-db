@@ -1,0 +1,198 @@
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:12:14.246Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:12:14.254Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:12:14.256Z"}
+{"level":"info","message":"Neues Buch hinzugefügt: sdvsd","timestamp":"2024-11-26T20:13:06.206Z"}
+{"level":"info","message":"Buch gelöscht: ID 6","timestamp":"2024-11-26T20:13:28.808Z"}
+{"level":"info","message":"Buch gelöscht: ID 5","timestamp":"2024-11-26T20:13:31.317Z"}
+{"level":"info","message":"Collection gelöscht: ID 23","timestamp":"2024-11-26T20:13:34.741Z"}
+{"level":"info","message":"Collection gelöscht: ID 24","timestamp":"2024-11-26T20:13:36.253Z"}
+{"level":"info","message":"Collection gelöscht: ID 25","timestamp":"2024-11-26T20:13:37.640Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:17:44.270Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:17:44.278Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:17:44.279Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:17:47.358Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:17:47.361Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T20:24:15.419Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T20:24:29.598Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T20:26:24.434Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T20:28:45.063Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T20:29:01.253Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:29:42.958Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:29:42.965Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:29:42.967Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:29:49.158Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:29:49.160Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:33:42.420Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:33:42.421Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:34:12.220Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:34:12.221Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:34:12.771Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:34:12.772Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:34:54.235Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:34:54.236Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:35:50.081Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:35:51.950Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:36:12.752Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:36:40.154Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:36:40.155Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:39:01.590Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:39:01.591Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:41:17.653Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:41:17.654Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:42:45.159Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:42:45.173Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:42:45.175Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T20:44:47.923Z"}
+{"level":"error","message":"Zugriff verweigert: Ungültiges Passwort","timestamp":"2024-11-26T20:44:51.423Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:44:55.284Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:44:55.289Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:44:55.290Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:46:40.274Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:46:40.283Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:46:40.285Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:47:06.076Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:47:06.079Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:47:20.812Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:47:20.813Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:47:59.439Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:47:59.445Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:47:59.447Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:50:29.125Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:50:29.131Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:50:29.133Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:51:20.676Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:51:20.679Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:51:29.358Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T20:55:47.354Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T20:55:47.361Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T20:55:47.363Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:06:06.528Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:06:06.534Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:06:06.535Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:06:11.552Z"}
+{"level":"info","message":"Passwort erfolgreich geändert!","timestamp":"2024-11-26T21:06:11.556Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:06:16.993Z"}
+{"level":"info","message":"Passwort erfolgreich geändert!","timestamp":"2024-11-26T21:06:16.999Z"}
+{"level":"error","message":"Zugriff verweigert: Ungültiges Passwort","timestamp":"2024-11-26T21:06:21.789Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:06:24.957Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:06:24.962Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:06:24.963Z"}
+{"level":"error","message":"Zugriff verweigert: Ungültiges Passwort","timestamp":"2024-11-26T21:08:29.072Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:08:32.524Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:08:32.529Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:08:32.532Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T21:08:45.463Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:09:05.196Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:09:05.197Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:09:07.583Z"}
+{"level":"info","message":"Benutzer gelöscht: ID 2","timestamp":"2024-11-26T21:09:07.589Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:09:07.593Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:09:07.594Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:11:00.687Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:11:00.693Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:11:00.694Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T21:12:33.938Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:12:37.365Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:12:37.371Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:12:37.373Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:17:10.311Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:17:10.317Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:17:10.319Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:17:16.682Z"}
+{"level":"info","message":"Benutzer aktualisiert: dorbez","timestamp":"2024-11-26T21:17:16.687Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:17:16.691Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:17:16.692Z"}
+{"level":"error","message":"Zugriff verweigert: Ungültiges Passwort","timestamp":"2024-11-26T21:20:30.110Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:20:34.694Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:20:34.698Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:20:34.700Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:20:42.406Z"}
+{"level":"info","message":"Neuer Benutzer hinzugefügt: admin","timestamp":"2024-11-26T21:20:42.411Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:20:42.415Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:20:42.416Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:26:12.796Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:26:12.797Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:26:24.095Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:26:24.101Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:26:24.103Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:28:53.419Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:28:53.424Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:28:53.426Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:28:57.205Z"}
+{"level":"info","message":"Passwort erfolgreich geändert!","timestamp":"2024-11-26T21:28:57.210Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:29:00.236Z"}
+{"level":"info","message":"Passwort erfolgreich geändert!","timestamp":"2024-11-26T21:29:00.238Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:29:06.055Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:29:06.057Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:34:38.130Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:36:32.801Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:36:58.937Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:36:59.598Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:36:59.840Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:18.216Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:18.807Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:26.417Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:27.265Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:27.696Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:46.180Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:37:53.534Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:38:04.024Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T21:40:59.524Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T21:41:40.245Z"}
+{"level":"error","message":"Zugriff verweigert: Ungültiges Passwort","timestamp":"2024-11-26T21:45:47.369Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:45:53.329Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:45:53.334Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:45:53.334Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:46:00.354Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:46:00.358Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:46:00.359Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T21:48:01.840Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:51:27.159Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T21:51:29.947Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:52:24.665Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:24.670Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:52:24.671Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:26.038Z"}
+{"level":"info","message":"Benutzer gelöscht: ID 4","timestamp":"2024-11-26T21:52:26.043Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:26.046Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:52:26.047Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:26.763Z"}
+{"level":"info","message":"Benutzer gelöscht: ID 1","timestamp":"2024-11-26T21:52:26.767Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:26.771Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:52:26.772Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:35.442Z"}
+{"level":"info","message":"Neuer Benutzer hinzugefügt: admin","timestamp":"2024-11-26T21:52:35.445Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:35.449Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:52:35.450Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:44.042Z"}
+{"level":"info","message":"Neuer Benutzer hinzugefügt: dorbez","timestamp":"2024-11-26T21:52:44.045Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:52:44.049Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:52:44.050Z"}
+{"level":"warn","message":"Redirecting to login from dashboard due to unauthenticated access","timestamp":"2024-11-26T21:53:18.446Z"}
+{"level":"info","message":"Benutzer eingeloggt","timestamp":"2024-11-26T21:57:43.271Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:43.277Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:57:43.278Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:44.476Z"}
+{"level":"info","message":"Benutzer gelöscht: ID 5","timestamp":"2024-11-26T21:57:44.481Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:44.486Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:57:44.487Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:45.035Z"}
+{"level":"info","message":"Benutzer gelöscht: ID 6","timestamp":"2024-11-26T21:57:45.041Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:45.046Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:57:45.047Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:55.946Z"}
+{"level":"info","message":"Neuer Benutzer hinzugefügt: dorbez","timestamp":"2024-11-26T21:57:55.950Z"}
+{"level":"info","message":"Admin logged in.","timestamp":"2024-11-26T21:57:55.954Z"}
+{"level":"info","message":"Benutzerübersicht angezeigt","timestamp":"2024-11-26T21:57:55.955Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T21:58:06.095Z"}
+{"level":"info","message":"Redirecting to login page","timestamp":"2024-11-26T22:01:11.933Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:07:21.464Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:07:29.140Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:07:46.788Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:07:47.597Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:08:20.797Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:08:30.928Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:09:20.721Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:09:21.574Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:09:36.458Z"}
+{"level":"info","message":"Statistics retrieved successfully","timestamp":"2024-11-26T22:17:56.392Z"}

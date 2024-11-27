@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 360
+    },
+    "auditLog": "C:\\Users\\adria_0gqnp2g\\Downloads\\verlag-db\\logs\\.2cbfc6b6f5c7c07ba7f2fc9ce1d1c0e963b7942b-audit.json",
+    "files": [
+        {
+            "date": 1732651880125,
+            "name": "C:\\Users\\adria_0gqnp2g\\Downloads\\verlag-db\\logs\\2024-11-26.log",
+            "hash": "f7f412d71a089aacfe83d6c556bd010e223fc736425dc23596cc02b1e4ab7b39"
+        },
+        {
+            "date": 1732722729583,
+            "name": "C:\\Users\\adria_0gqnp2g\\Downloads\\verlag-db\\logs\\2024-11-27.log",
+            "hash": "032946315623db5006928819350cc530bbe430d4b918e979d365d01cb39bea90"
+        }
+    ],
+    "hashType": "sha256"
+}
