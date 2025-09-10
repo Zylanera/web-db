@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Neues Buch | Verlag-DB{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h1 class="h5 mb-3">Neues Buch</h1>
+    <form method="post">
+      {{ form.hidden_tag() }}
+      <div class="row g-3">
+        <div class="col-md-6">
+          {{ form.title.label(class='form-label') }}
+          {{ form.title(class='form-control', placeholder='Titel') }}
+        </div>
+        <div class="col-md-6">
+          {{ form.cover.label(class='form-label') }}
+          {{ form.cover(class='form-control', placeholder='Cover-URL') }}
+        </div>
+        <div class="col-12">
+          {{ form.description.label(class='form-label') }}
+          {{ form.description(class='form-control', rows=3) }}
+        </div>
+        <div class="col-md-3">
+          {{ form.price.label(class='form-label') }}
+          {{ form.price(class='form-control') }}
+        </div>
+        <div class="col-md-3">
+          {{ form.release_date.label(class='form-label') }}
+          {{ form.release_date(class='form-control', placeholder='YYYY-MM-DD') }}
+        </div>
+        <div class="col-md-3">
+          {{ form.volumeNumber.label(class='form-label') }}
+          {{ form.volumeNumber(class='form-control') }}
+        </div>
+        <div class="col-md-3">
+          {{ form.isbn13.label(class='form-label') }}
+          {{ form.isbn13(class='form-control') }}
+        </div>
+        <div class="col-12">
+          {{ form.collection_id.label(class='form-label') }}
+          {{ form.collection_id(class='form-select') }}
+        </div>
+      </div>
+      <div class="d-grid mt-3">
+        <button class="btn btn-primary" type="submit">Speichern</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

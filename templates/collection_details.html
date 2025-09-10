@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Collection | Verlag-DB{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <h1 class="h3 mb-0">{{ collection.name }}</h1>
+    <div class="text-secondary">{{ collection.description or '–' }}</div>
+  </div>
+  <a class="btn btn-outline-secondary" href="{{ url_for('edit_collection', cid=collection.id) }}"><i class="bi bi-pencil me-1"></i>Bearbeiten</a>
+</div>
+
+<h5 class="mb-3">Bücher</h5>
+<ul class="list-group">
+  {% for b in books %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ b.title }}</span>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('edit_book', bid=b.id) }}"><i class="bi bi-pencil"></i></a>
+    </li>
+  {% else %}
+    <li class="list-group-item text-secondary">Keine Bücher in dieser Collection.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

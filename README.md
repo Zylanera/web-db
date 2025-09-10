@@ -1,239 +1,318 @@
-# Overview
-### -- using this project the docker (new) way --
-1. Installing the MySQL
-2. Setting up MySQL for this project
-3. Installing the App
-4. Setting up the config file
-5. Disabeing/Enabeling the register-form.
+Alright — here’s a clear, slightly casual English version with the same structure and code blocks.
 
+# Web DB (Python/Flask)
 
-This project is made for managing books with collections. It is recommended for publishers and projects like manga-passion.de (mangapassion does not use it tho), but you could also us it for your private book-collection.
+Small publisher/books DB with auth, collections & books, plus a dashboard.
+Backend: **Flask + SQLAlchemy** · DB: **SQLite** (default) or **MariaDB/MySQL**.
 
-How to Setup:
+---
 
-**Step 1:** Make sure Docker is installed. I recommend using using Docker with Portainer.
+## Features
 
-**Step 2:** Setup the Database via the following command:
-```
-sudo docker run \
-  --name db-app-mysql \
-  -e MYSQL_ROOT_PASSWORD=rootpassword \
-  zylanera/web-db-mysql:latest
+* Login/Logout, sign-up with **“make first registrant an admin”**
+* CRUD for **Books** & **Collections**
+* Dashboard stats (month, last month, yearly trend, avg price)
+* CSRF protection via Flask-WTF
+* Modern templates (Bootstrap 5, dark theme)
 
-```
-Please **change the "rootpassword" to any other password.** please note, that you will need this password later!
+---
 
-Note: You may be asked for your users password, if you run this command outside of the root user!
+## Requirements
 
-**Step 3:**
-Install the App. Note, that **you have to set the path on your computer, outside of your container**, as you will need to edit some things in the files later!
-```
-docker run -d \
-  --name web-db-container \
-  -p 9444:9444 \
-  -v /your/path/to/web-db-app:/data \
-  zylanera/web-db-app:latest
+* **Python 3.11+** (3.12 recommended)
+* Optional **MariaDB/MySQL** if you don’t use SQLite
+* For Docker: Docker Engine (or remote build via GitHub Actions)
 
-```
+---
 
+## Configuration
 
-**Step 4 (optional):**
-if you want your app to run on an other port than 9444, you have to edit the command like this:
-```
-docker run -d \
-  --name web-db-container \
-  -p 9444:<yourPort> \
-  -v /your/path/to/web-db-app:/data \
-  zylanera/web-db-app:latest
+1. Copy the example env:
 
-```
-Replace the <yourPort> by the port you want the app to be running on.
-
-
-**Step 5:**
-run the following commands:
-```
-cd /your/path/to/web-db-app/config/
-sudo nano database.js
+```bash
+# Linux/macOS
+cp .example.env .env
+# Windows (PowerShell)
+copy .example.env .env
 ```
 
-now you should see this code:
-```
-const mysql = require('mysql2');
+2. Edit `.env`:
 
-const connection = mysql.createConnection({
-    host: '172.17.0.2',
-    user: 'root',
-    password: 'root',
-    database: 'dbreg'
-});
+```ini
+SECRET_KEY=change-this-in-prod
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log(` `);
-    console.log(`=== ESTABLISHING DB CONNECTION ===`);
-    console.log(`✅ CODE 200: OK`);
-    console.log(`✅ CODE 200: CONNECTED TO MySQL DATABASE`);
-    console.log(`=== ESTABLISHING DB CONNECTION ===`);
-    console.log(` `);
-    
-});
+# SQLite (default) — file is created automatically
+DATABASE_URL=sqlite:///data/app.sqlite3
 
-module.exports = connection;
+# MariaDB/MySQL (optional):
+# DATABASE_URL=mysql+pymysql://user:password@host:3306/publisherdb
 
+# Optional: later admin promotions require a token
+ADMIN_SETUP_TOKEN=
 ```
 
-Run this Commands in a seperate console/terminal:
-```
-sudo docker ps
-```
-copy the id of your web-db-mysql container and replace <yourDockerContainerId> with this ID. The run this command in your console/terminal:
+---
 
-```
-sudo docker inspect <yourDockerContainerId> | grep "IPAddress"
-```
+## Install & Run (from source)
 
-Now you copy the "IPAddress" and replace the ip at "host" with it. 
-You will also need to replace the username and password for your database if these variables are different than those here.
+### A) Windows **without venv** (good for locked-down environments)
 
-```
-const connection = mysql.createConnection({
-    host: '172.17.0.2',
-    user: 'root',
-    password: 'root',
-    database: 'dbreg'
-});
+```powershell
+# Install deps into the user profile (no admin needed)
+python -m pip install --user --upgrade pip
+python -m pip install --user -r requirements.txt
+
+# Create DB tables (SQLite file will be created)
+python -c "from database import init_db; init_db()"
+
+# Start
+python app.py
+# -> http://localhost:3000
 ```
 
-Now save the File.
+### B) Windows **without venv** using a project-local “vendor” folder (`_deps`)
 
-**Step 6 (optional):**
-If you have already created an account for yourself, you can disable the registration-form like this:
+```powershell
+# Install packages locally into the project
+python -m pip install --upgrade pip
+python -m pip install --target ".\_deps" -r requirements.txt
 
-Run this Command:
-```
-cd /your/path/to/web-db-app/routes/
-sudo nano auth.js
-```
+# Create DB tables
+$env:PYTHONPATH="$PWD\_deps"
+python -c "from database import init_db; init_db()"
 
-Via the "const reg = true;" at line 7 you can turn the registration form on and off, default is true (enabled). 
-
-You can change this at any time. 
-
-true = enabled registration form
-false = disabled registration form (only login with existing accounts possible)
-
-**Step 7 (optional):**
-if you go to the /your/path/to/web-db-app/public/media folder, you can replace the used media-files, such as the logo in the Navbar.
-
-There you go,
-you have now setup the web-db-app successfully.
- 
-
-<br><br><br><br>
-
-### -- using this project the old way (may be outdated) --
-1. How to setup MySQL for this project
-2. How to set up the config file
-3. Startup
-
-## 1. MySQL-Setup:
-
-### Step 1: Create and Setup Database
-Replace "dbreg" if you want to.
-⚠️ If you replace "dbreg", you have to change it in your config file. ⚠️
-```mysql
-CREATE DATABASE IF NOT EXISTS dbreg;
-
-USE dbreg;
-
-CREATE TABLE IF NOT EXISTS users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS books (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(255),
-  user_id INT,
-  FOREIGN KEY(user_id) REFERENCES users(id)
-);
-
-CREATE TABLE IF NOT EXISTS collections (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255),
-  user_id INT,
-  FOREIGN KEY(user_id) REFERENCES users(id)
-);
-
-CREATE TABLE IF NOT EXISTS collection_books (
-  collection_id INT,
-  book_id INT,
-  FOREIGN KEY(collection_id) REFERENCES collections(id),
-  FOREIGN KEY(book_id) REFERENCES books(id),
-  PRIMARY KEY(collection_id, book_id)
-);
-
-ALTER TABLE books ADD COLUMN cover VARCHAR(255);
-ALTER TABLE books ADD COLUMN description TEXT;
-ALTER TABLE books ADD COLUMN price VARCHAR(50);
-ALTER TABLE books ADD COLUMN release_date VARCHAR(50);
-ALTER TABLE books ADD COLUMN volume_number VARCHAR(50);
-ALTER TABLE books ADD COLUMN isbn13 VARCHAR(20);
-ALTER TABLE books ADD COLUMN isbn10 VARCHAR(20);
+# Start
+$env:PYTHONPATH="$PWD\_deps"
+python app.py
 ```
 
-### Step 2: Create DB-User:
-Replace "localhost" if needed<br>
-Replace "yourUsername" by your Username you want to set as your Username<br>
-Replace "yourPassword" by the password  you want to set as your DB-User's password<br>
-```mysql
-CREATE USER 'yourUsername'@'localhost' IDENTIFIED BY 'yourPassword';
+> Tip (create a batch script `run-no-venv-python.bat`):
+>
+> ```bat
+> @echo off
+> setlocal
+> set "DEPS=%CD%\_deps"
+> if not exist "%DEPS%" (
+>   python -m pip install --upgrade pip
+>   python -m pip install --target "%DEPS%" -r requirements.txt
+> )
+> if not exist ".env" copy .env.example .env >NUL
+> set "PYTHONPATH=%DEPS%"
+> python -c "from database import init_db; init_db()"
+> python app.py
+> endlocal
+> ```
+
+### C) Linux/macOS (with venv)
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Create DB tables
+python -c "from database import init_db; init_db()"
+
+# Start
+python app.py
+# -> http://localhost:3000
 ```
 
-### Step 3: Setup DB-User:
-Replace "localhost" if needed<br>
-Replace "yourUsername" by your Username<br>
-Replace "yourPassword" by your DB-User's password.<br>
-```mysql
-GRANT ALL PRIVILEGES ON *.* TO 'yourUsername'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+---
+
+## Using MariaDB/MySQL
+
+1. Install the driver (if it’s not already in your Docker image):
+
+```bash
+# Linux/macOS (venv)
+pip install PyMySQL
+# Windows without venv (user install)
+python -m pip install --user PyMySQL
 ```
 
+2. Edit `.env`:
 
-## 2. Config-File-Setup
-Replace "localhost" if needed<br>
-Replace "yourUsername" by your Username<br>
-Replace "yourPassword" by your DB-User's password.<br>
-Replace "dbreg" by your Database-Name, if you changed it when setting up the MySQL-DB.
-```js
-const mysql = require('mysql2');
+```ini
+SECRET_KEY=change-this-in-prod
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'yourUsername',
-    password: 'yourPassword',
-    database: 'dbreg'
-});
+# SQLite (default) — file is created automatically
+#DATABASE_URL=sqlite:///data/app.sqlite3
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to MySQL Database');
-});
+# MariaDB/MySQL (optional):
+DATABASE_URL=mysql+pymysql://user:password@host:3306/publisherdb
 
-module.exports = connection;
+# Optional: later admin promotions require a token
+ADMIN_SETUP_TOKEN=
 ```
 
-## 3. Startup
-Run the following commands in the shell:
+3. Start the app — tables are created on first run.
+
+---
+
+## Docker (without Compose)
+
+### Dockerfile
+
+Drop this file in the project as `Dockerfile` (or use the one that’s already there). Tweak things like the port if you want:
+
+```dockerfile
+# === Dockerfile for Publisher DB (Flask) ===
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    FLASK_ENV=production \
+    PORT=3000
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      curl build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir gunicorn PyMySQL
+
+COPY . .
+RUN mkdir -p /app/data
+
+# Non-root user
+RUN useradd -ms /bin/bash appuser \
+ && chown -R appuser:appuser /app
+USER appuser
+
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=5 \
+  CMD curl -fsS http://localhost:3000/ || exit 1
+
+CMD ["gunicorn", "-b", "0.0.0.0:3000", "-w", "2", "-k", "gthread", "--threads", "4", "app:app"]
 ```
-npm init -y
+
+### Build the image
+
+```bash
+# in the project directory
+docker build -t publisher-db:flask .
 ```
+
+### Run with **SQLite** (persistent data)
+
+```bash
+# Linux/macOS
+docker run -d --name publisher-db -p 3000:3000 -v "$PWD/data:/app/data" publisher-db:flask
+
+# Windows PowerShell
+docker run -d --name publisher-db -p 3000:3000 -v "${PWD}\data:/app/data" publisher-db:flask
 ```
-npm install
+
+### Run with **MariaDB/MySQL**
+
+```bash
+docker run -d --name publisher-db \
+  -p 3000:3000 \
+  -e DATABASE_URL="mysql+pymysql://user:password@db-host:3306/publisherdb" \
+  -e SECRET_KEY="change-this-in-prod" \
+  publisher-db:flask
 ```
+
+**View logs:** `docker logs -f publisher-db`
+**Stop/Remove:** `docker rm -f publisher-db`
+
+---
+
+## Remote Image Build (no local Docker) — GitHub Actions → GHCR
+
+Create `.github/workflows/docker.yml`:
+
+```yaml
+name: Build & Push Docker image (GHCR)
+on:
+  push: { branches: [ main ] }
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: { contents: read, packages: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set image name
+        id: meta
+        run: |
+          echo "IMAGE=ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.IMAGE }}:latest
+            ${{ steps.meta.outputs.IMAGE }}:sha-${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 ```
-node app.js
+
+The image will show up in **GitHub Container Registry** at
+`ghcr.io/<owner>/<repo>:latest`.
+
+---
+
+## Admin Onboarding
+
+* **First user**: Tick **“Set as admin”** during sign-up.
+* **More admins**: Only with `ADMIN_SETUP_TOKEN` from `.env` (field on the registration form).
+
+---
+
+## Directory Layout (short)
+
 ```
+.
+├─ app.py                 # Flask routes & views
+├─ models.py              # SQLAlchemy models
+├─ database.py            # Engine & init_db()
+├─ auth.py                # Flask-Login integration
+├─ forms.py               # Flask-WTF forms (CSRF)
+├─ utils.py               # Stats helpers
+├─ templates/             # Jinja2 templates (Bootstrap UI)
+├─ static/styles.css      # Custom CSS
+├─ requirements.txt
+├─ .env.example
+└─ Dockerfile             # optional (see above)
+```
+
+---
+
+## Troubleshooting
+
+* **White screen / blank page**
+
+  * Clear browser cache / hard reload (Ctrl+F5).
+  * Check the terminal: template error or stack trace?
+
+* **`SQLITE_CANTOPEN`**
+
+  * Is the `./data` folder there and writable? With Docker, mount it via `-v`.
+
+* **MariaDB won’t connect**
+
+  * Check `DATABASE_URL` (user/pass/host/port/db).
+  * Is the port open? Does the user have the right permissions?
+
+* **Windows: “python” not found**
+
+  * Try `python --version`. Maybe enable **App execution aliases** or reinstall Python.
+
+If it still won’t behave, please open an issue!
+
+---
+
+## License & Changelog
+
+* See **CHANGELOG.md** for changes.
+* License is in: `LICENCE.md`

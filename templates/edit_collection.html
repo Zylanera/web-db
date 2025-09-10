@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Collection bearbeiten | Verlag-DB{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h1 class="h5 mb-3">Collection bearbeiten</h1>
+    <form method="post">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
+        {{ form.name.label(class='form-label') }}
+        {{ form.name(class='form-control') }}
+      </div>
+      <div class="mb-3">
+        {{ form.description.label(class='form-label') }}
+        {{ form.description(class='form-control', rows=3) }}
+      </div>
+      <button class="btn btn-primary" type="submit">Speichern</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

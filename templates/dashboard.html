@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Verlag-DB{% endblock %}
+{% block content %}
+<h1 class="h3 mb-4">Dashboard</h1>
+<div class="row g-3">
+  <div class="col-md-3">
+    <div class="card stat-card">
+      <div class="card-body">
+        <div class="text-secondary small">Releases (Monat)</div>
+        <div class="display-6">{{ stats.monthlyReleases[0].count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card">
+      <div class="card-body">
+        <div class="text-secondary small">Releases (letzter Monat)</div>
+        <div class="display-6">{{ stats.lastMonthReleases[0].count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card">
+      <div class="card-body">
+        <div class="text-secondary small">Bücher gesamt</div>
+        <div class="display-6">{{ stats.bookEntries[0].count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card stat-card">
+      <div class="card-body">
+        <div class="text-secondary small">Collections gesamt</div>
+        <div class="display-6">{{ stats.collectionEntries[0].count }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="card-title">Ø Preis</h5>
+    <p class="fs-3 mb-0">{{ '%.2f'|format(stats.averagePrice[0].average) }} €</p>
+  </div>
+</div>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <h5 class="card-title">Releases pro Monat (dieses Jahr)</h5>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+      {% for r in stats.yearlyReleases %}
+        <div class="col">
+          <div class="border rounded p-3 d-flex justify-content-between align-items-center">
+            <span class="text-secondary">Monat {{ r.month }}</span>
+            <strong class="fs-5">{{ r.count }}</strong>
+          </div>
+        </div>
+      {% else %}
+        <p class="text-secondary">Keine Daten verfügbar.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
