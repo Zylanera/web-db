@@ -45,7 +45,7 @@ SECRET_KEY=change-this-in-prod
 DATABASE_URL=sqlite:///data/app.sqlite3
 
 # MariaDB/MySQL (optional):
-# DATABASE_URL=mysql+pymysql://user:password@host:3306/publisherdb
+# DATABASE_URL=mysql+pymysql://user:password@host:3306/Webdb
 
 # Optional: later admin promotions require a token
 ADMIN_SETUP_TOKEN=
@@ -140,7 +140,7 @@ SECRET_KEY=change-this-in-prod
 #DATABASE_URL=sqlite:///data/app.sqlite3
 
 # MariaDB/MySQL (optional):
-DATABASE_URL=mysql+pymysql://user:password@host:3306/publisherdb
+DATABASE_URL=mysql+pymysql://user:password@host:3306/Webdb
 
 # Optional: later admin promotions require a token
 ADMIN_SETUP_TOKEN=
@@ -157,7 +157,7 @@ ADMIN_SETUP_TOKEN=
 Drop this file in the project as `Dockerfile` (or use the one that’s already there). Tweak things like the port if you want:
 
 ```dockerfile
-# === Dockerfile for Publisher DB (Flask) ===
+# === Dockerfile for Web DB (Flask) ===
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -194,31 +194,31 @@ CMD ["gunicorn", "-b", "0.0.0.0:3000", "-w", "2", "-k", "gthread", "--threads", 
 
 ```bash
 # in the project directory
-docker build -t publisher-db:flask .
+docker build -t Web-db:flask .
 ```
 
 ### Run with **SQLite** (persistent data)
 
 ```bash
 # Linux/macOS
-docker run -d --name publisher-db -p 3000:3000 -v "$PWD/data:/app/data" publisher-db:flask
+docker run -d --name Web-db -p 3000:3000 -v "$PWD/data:/app/data" Web-db:flask
 
 # Windows PowerShell
-docker run -d --name publisher-db -p 3000:3000 -v "${PWD}\data:/app/data" publisher-db:flask
+docker run -d --name Web-db -p 3000:3000 -v "${PWD}\data:/app/data" Web-db:flask
 ```
 
 ### Run with **MariaDB/MySQL**
 
 ```bash
-docker run -d --name publisher-db \
+docker run -d --name Web-db \
   -p 3000:3000 \
-  -e DATABASE_URL="mysql+pymysql://user:password@db-host:3306/publisherdb" \
+  -e DATABASE_URL="mysql+pymysql://user:password@db-host:3306/Webdb" \
   -e SECRET_KEY="change-this-in-prod" \
-  publisher-db:flask
+  Web-db:flask
 ```
 
-**View logs:** `docker logs -f publisher-db`
-**Stop/Remove:** `docker rm -f publisher-db`
+**View logs:** `docker logs -f Web-db`
+**Stop/Remove:** `docker rm -f Web-db`
 
 ---
 
