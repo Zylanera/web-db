@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Admin – Bücher & Collections{% endblock %}
+{% block content %}
+<h2 class="mb-3">Collections – Berechtigungen</h2>
+
+<table class="table table-sm align-middle">
+  <thead class="table-dark">
+    <tr><th>ID</th><th>Name</th><th>Owner</th><th>Sichtbar für</th><th>Bearbeitbar durch</th><th></th></tr>
+  </thead>
+  <tbody>
+  {% for c in collections %}
+    <tr>
+      <td>{{ c.id }}</td>
+      <td>{{ c.name }}</td>
+      <td>{{ c.owner.username if c.owner else c.user_id }}</td>
+      <form method="post" action="{{ url_for('admin.set_collection_permissions', cid=c.id) }}">
+        <td>
+          <select name="visible_to" class="form-select form-select-sm">
+            {% for v in ['all','editor','owner','admin'] %}
+              <option value="{{ v }}" {% if c.visible_to == v %}selected{% endif %}>{{ v }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td>
+          <select name="editable_by" class="form-select form-select-sm">
+            {% for v in ['owner','editor','admin'] %}
+              <option value="{{ v }}" {% if c.editable_by == v %}selected{% endif %}>{{ v }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td><button class="btn btn-sm btn-primary">Speichern</button></td>
+      </form>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<h2 class="mt-5 mb-3">Books – Berechtigungen</h2>
+<table class="table table-sm align-middle">
+  <thead class="table-dark">
+    <tr><th>ID</th><th>Title</th><th>Owner</th><th>Visible To</th><th>Editable By</th><th>Aktion</th></tr>
+  </thead>
+  <tbody>
+  {% for b in books %}
+    <tr>
+      <td>{{ b.id }}</td>
+      <td>{{ b.title }}</td>
+      <td>{{ b.owner.username if b.owner else b.user_id }}</td>
+      <form method="post" action="{{ url_for('admin.set_book_permissions', bid=b.id) }}">
+        <td>
+          <select name="visible_to" class="form-select form-select-sm">
+            {% for v in ['all','editor','owner','admin'] %}
+              <option value="{{ v }}" {% if b.visible_to == v %}selected{% endif %}>{{ v }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td>
+          <select name="editable_by" class="form-select form-select-sm">
+            {% for v in ['owner','editor','admin'] %}
+              <option value="{{ v }}" {% if b.editable_by == v %}selected{% endif %}>{{ v }}</option>
+            {% endfor %}
+          </select>
+        </td>
+        <td><button class="btn btn-sm btn-primary">Speichern</button></td>
+      </form>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

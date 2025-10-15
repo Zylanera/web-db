@@ -8,7 +8,7 @@ if cfg.DATABASE_URL.startswith("sqlite"):
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
 engine = create_engine(cfg.DATABASE_URL, echo=cfg.SQLALCHEMY_ECHO, future=True)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, expire_on_commit=False, future=True)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
 class Base(DeclarativeBase):
     pass

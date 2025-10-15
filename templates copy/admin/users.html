@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Admin – Benutzer{% endblock %}
+{% block content %}
+<h2 class="mb-3">Benutzerverwaltung</h2>
+
+<table class="table table-sm align-middle">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th><th>Username</th><th>Email</th><th>Rolle</th><th>Aktion</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+    <tr>
+      <td>{{ u.id }}</td>
+      <td>{{ u.username }}</td>
+      <td>{{ u.email or '–' }}</td>
+      <td>{{ u.role }}</td>
+      <td>
+        <form method="post" action="{{ url_for('admin.set_role', uid=u.id) }}" class="d-flex gap-2">
+          <select name="role" class="form-select form-select-sm" style="width:140px">
+            {% for r in ['viewer','editor','admin'] %}
+              <option value="{{ r }}" {% if u.role == r %}selected{% endif %}>{{ r }}</option>
+            {% endfor %}
+          </select>
+          <button class="btn btn-sm btn-primary">Speichern</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

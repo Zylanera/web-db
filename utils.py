@@ -40,3 +40,91 @@ def get_statistics(db, user_id: int | None = None):
         "averagePrice": [{"average": average}],
         "yearlyReleases": yearly,
     }
+
+# ==== RBAC & Permissions helpers ====
+from flask import abort
+from flask_login import current_user
+from functools import wraps
+from typing import Callable
+from models import AuditLog, Collection, Book
+from database import SessionLocal
+
+
+def role_in(min_role: str) -> bool:
+    order = {"viewer": 0, "editor": 1, "admin": 2}
+    try:
+        return order.get(getattr(current_user, "role", "viewer"), 0) >= order[min_role]
+    except Exception:
+        return False
+
+def role_required(min_role: str):
+    def decorator(f: Callable):
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            if not current_user.is_authenticated or not role_in(min_role):
+                from flask import abort
+                return abort(403)
+            return f(*args, **kwargs)
+        return wrapper
+    return decorator
+
+def can_view(obj, user) -> bool:
+    if getattr(user, "role", "viewer") == "admin":
+        return True
+    rule = getattr(obj, "visible_to", "all")
+    if rule == "all":
+        return True
+    if rule == "editor" and getattr(user, "role", "viewer") in {"editor"}:
+        return True
+    if rule == "owner" and getattr(obj, "user_id", None) == int(getattr(user, "id", -1)):
+        return True
+    if rule == "admin":
+        return getattr(user, "role", "viewer") == "admin"
+    return False
+
+def can_edit(obj, user) -> bool:
+    if getattr(user, "role", "viewer") == "admin":
+        return True
+    rule = getattr(obj, "editable_by", "owner")
+    if rule == "editor" and getattr(user, "role", "viewer") in {"editor"}:
+        return True
+    if rule == "owner" and getattr(obj, "user_id", None) == int(getattr(user, "id", -1)):
+        return True
+    return False
+
+def log_action(user, action: str, target_type: str, target_id: int | None, details: str | None = None, db=None):
+    """Writes an audit log entry, optionally using an existing session."""
+    try:
+        if db is None:
+            with SessionLocal() as db_new:
+                entry = AuditLog(
+                    user_id=(int(user.id) if getattr(user, "is_authenticated", False) else None),
+                    action=action,
+                    target_type=target_type,
+                    target_id=target_id,
+                    details=details,
+                )
+                db_new.add(entry)
+                db_new.commit()
+        else:
+            entry = AuditLog(
+                user_id=(int(user.id) if getattr(user, "is_authenticated", False) else None),
+                action=action,
+                target_type=target_type,
+                target_id=target_id,
+                details=details,
+            )
+            db.add(entry)
+            
+    except Exception as e:
+        print("Audit log failed:", e)
+        pass
+
+def admin_required(f):
+    from functools import wraps
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        if not current_user.is_authenticated or current_user.role != 'admin':
+            abort(403)
+        return f(*args, **kwargs)
+    return wrapper

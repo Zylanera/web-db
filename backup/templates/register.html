@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Registrieren | Verlag-DB{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Account erstellen</h1>
+        <form method="post" novalidate>
+          {{ form.hidden_tag() }}
+          <div class="row g-3">
+            <div class="col-md-6">
+              {{ form.username.label(class='form-label') }}
+              {{ form.username(class='form-control', placeholder='Benutzername') }}
+            </div>
+            <div class="col-md-6">
+              {{ form.email.label(class='form-label') }}
+              {{ form.email(class='form-control', placeholder='name@example.com') }}
+            </div>
+            <div class="col-12">
+              {{ form.password.label(class='form-label') }}
+              {{ form.password(class='form-control', placeholder='Passwort') }}
+            </div>
+            {% if not admin_exists %}
+              <div class="col-12 form-check ms-2">
+                {{ form.makeAdmin(class='form-check-input', id='makeAdmin') }}
+                <label class="form-check-label" for="makeAdmin">{{ form.makeAdmin.label.text }}</label>
+              </div>
+            {% else %}
+              <div class="col-12">
+                {{ form.adminToken.label(class='form-label') }}
+                {{ form.adminToken(class='form-control', placeholder='ADMIN_SETUP_TOKEN') }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="d-grid mt-4">
+            <button class="btn btn-primary" type="submit">Registrieren</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,38 +1,27 @@
-from datetime import datetime
-from sqlalchemy import String, Integer, Date, Float, Text, ForeignKey, UniqueConstraint, DateTime
+from sqlalchemy import String, Integer, Date, Float, Text, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from database import Base
 
-# ---- User ----
 class User(Base):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     username: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
     email: Mapped[str | None] = mapped_column(String(255), unique=True)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
-    # roles: 'admin' | 'editor' | 'viewer'
-    role: Mapped[str] = mapped_column(String(10), default="viewer")
+    role: Mapped[str] = mapped_column(String(10), default="user")  # 'user' | 'admin'
     collections: Mapped[list["Collection"]] = relationship(back_populates="owner", cascade="all, delete-orphan")
     books: Mapped[list["Book"]] = relationship(back_populates="owner", cascade="all, delete-orphan")
 
-# ---- Collection ----
 class Collection(Base):
     __tablename__ = "collections"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
-    name: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str] = mapped_column(Text, default="")
-    # Permissions (Confluence-like, coarse for now)
-    visible_to: Mapped[str] = mapped_column(String(50), default="all")     # all | admin | editor | owner
-    editable_by: Mapped[str] = mapped_column(String(50), default="owner")  # admin | editor | owner
     owner: Mapped["User"] = relationship(back_populates="collections")
-    books: Mapped[list["Book"]] = relationship(back_populates="collection", cascade="all, delete-orphan")
+    books: Mapped[list["Book"]] = relationship(back_populates="collection")
+    __table_args__ = (UniqueConstraint("user_id", "name", name="uq_user_collection_name"),)
 
-    __table_args__ = (
-        UniqueConstraint('user_id', 'name', name='uq_user_collection_name'),
-    )
-
-# ---- Book ----
 class Book(Base):
     __tablename__ = "books"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
@@ -45,19 +34,5 @@ class Book(Base):
     release_date: Mapped[Date | None] = mapped_column(Date)
     volumeNumber: Mapped[int] = mapped_column(Integer, default=1)
     isbn13: Mapped[str | None] = mapped_column(String(13))
-    # Permissions (inherit-style defaults)
-    visible_to: Mapped[str] = mapped_column(String(50), default="all")
-    editable_by: Mapped[str] = mapped_column(String(50), default="owner")
     owner: Mapped["User"] = relationship(back_populates="books")
     collection: Mapped["Collection"] = relationship(back_populates="books")
-
-# ---- AuditLog ----
-class AuditLog(Base):
-    __tablename__ = "audit_log"
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    user_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
-    action: Mapped[str] = mapped_column(String(255))
-    target_type: Mapped[str] = mapped_column(String(50))  # "Book", "Collection", "User"
-    target_id: Mapped[int | None] = mapped_column(Integer)
-    details: Mapped[str | None] = mapped_column(Text)
-    timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)

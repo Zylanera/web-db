@@ -6,18 +6,60 @@
     <h1 class="h3 mb-0">{{ collection.name }}</h1>
     <div class="text-secondary">{{ collection.description or '–' }}</div>
   </div>
-  <a class="btn btn-outline-secondary" href="{{ url_for('edit_collection', cid=collection.id) }}"><i class="bi bi-pencil me-1"></i>Bearbeiten</a>
+  <a class="btn btn-outline-secondary"
+     href="{{ url_for('edit_collection', cid=collection.id) }}">
+    <i class="bi bi-pencil me-1"></i>Bearbeiten
+  </a>
 </div>
 
 <h5 class="mb-3">Bücher</h5>
-<ul class="list-group">
-  {% for b in books %}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <span>{{ b.title }}</span>
-      <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('edit_book', bid=b.id) }}"><i class="bi bi-pencil"></i></a>
-    </li>
-  {% else %}
-    <li class="list-group-item text-secondary">Keine Bücher in dieser Collection.</li>
-  {% endfor %}
-</ul>
+
+<div class="table-responsive">
+  <table class="table table-hover align-middle">
+    <thead class="table-secondary">
+      <tr>
+        <th>Titel</th>
+        <th>Band</th>
+        <th>Release</th>
+        <th>Preis</th>
+        <th class="text-end">Aktionen</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in books %}
+      <tr>
+        <td>
+          {% if b.cover %}
+            <img src="{{ b.cover }}" alt="Cover"
+                 class="img-thumbnail me-2"
+                 style="max-height: 80px; max-width: 60px;">
+          {% endif %}
+          {{ b.title }}
+        </td>
+        <td>{{ b.volumeNumber or '-' }}</td>
+        <td>{{ b.release_date or '-' }}</td>
+        <td>{{ '%.2f'|format(b.price or 0) }} €</td>
+        <td class="text-end">
+          <a class="btn btn-sm btn-outline-secondary"
+             href="{{ url_for('edit_book', bid=b.id) }}">
+             <i class="bi bi-pencil"></i>
+          </a>
+          <form method="post"
+                action="{{ url_for('delete_book', bid=b.id) }}"
+                class="d-inline"
+                onsubmit="return confirm('Wirklich löschen?');">
+            <button class="btn btn-sm btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="5" class="text-secondary">Keine Bücher in dieser Collection.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
